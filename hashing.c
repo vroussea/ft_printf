@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hashing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/07 17:09:04 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/08 17:06:23 by vroussea         ###   ########.fr       */
+/*   Created: 2016/09/08 17:08:25 by vroussea          #+#    #+#             */
+/*   Updated: 2016/09/08 17:08:28 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	main(int ac, char **av)
+int		hash(const char *key)
 {
-	if (ac == 2)
+	int	count;
+	int	i;
+
+	i = 0;
+	count = 0;
+	while (key[i] != '\0')
 	{
-		hash(av[1]);
-		hash("d");
-		hash("i");
-		hash("o");
-		hash("u");
-		hash("x");
-		hash("X");
-		hash("n");
-		hash("s");
-		hash("c");
-		hash("%");
-		ft_putstr("ft_printf : ");
-		ft_printf("%d%d%d\n", 4, 4, 4);
-		printf("printf : %d%d%d\n", 4, 4, 4);
+		count += key[i];
+		i++;
 	}
-	return (0);
+	ft_putendl(ft_itoa((count % 45) / 1.2));
+	return (1);
+}
+
+void	**init_hash()
+{
+	void	**tab;
+
+	tab = (void **)ft_memalloc(sizeof(void *) * 36);
+	tab[8] = integer;
+//	tab[12] = ;
+//	tab[17] = ;
+//	tab[22] = ;
+//	tab[25] = ;
+//	tab[35] = ;
+//	tab[16] = ;
+//	tab[20] = ;
+//	tab[7] = ;
+//	tab[30] = ;
+	return (tab);
 }
