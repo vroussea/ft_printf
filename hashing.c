@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 17:08:25 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/08 17:08:28 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/08 18:40:48 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,17 @@ int		hash(const char *key)
 
 void	**init_hash()
 {
-	void	**tab;
+	void	**ptr;
+	void	*(*tab)(int);
+	void	(*test)(int);
 
-	tab = (void **)ft_memalloc(sizeof(void *) * 36);
-	tab[8] = integer;
+	ptr = (void **)ft_memalloc(sizeof(void *) * 36);
+	tab = (void *(*)(int))ft_memalloc(sizeof(void *) * 36);
+	test = &integer;
+	tab[8] = test;
+	ft_putstr("\ntest fonction test : ");
+	tab[8](4);
+	ft_putendl("");
 //	tab[12] = ;
 //	tab[17] = ;
 //	tab[22] = ;
@@ -43,5 +50,5 @@ void	**init_hash()
 //	tab[20] = ;
 //	tab[7] = ;
 //	tab[30] = ;
-	return (tab);
+	return (ptr);
 }

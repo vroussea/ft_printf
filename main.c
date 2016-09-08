@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 17:09:04 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/08 17:06:23 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/08 17:55:08 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int ac, char **av)
 		hash("c");
 		hash("%");
 		ft_putstr("ft_printf : ");
-		ft_printf("%d%d%d\n", 4, 4, 4);
-		printf("printf : %d%d%d\n", 4, 4, 4);
+		ft_printf("%d\n", 4.5);
+		printf("printf : %f and %d\n", 97.5, 4);
 	}
 	return (0);
 }

@@ -6,16 +6,20 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 16:42:55 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/08 17:07:20 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/08 18:58:45 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 
+
+hash_t hashtable[length] = {['d']=foo , ['p']=bar};
+
 int	ft_printf(const char *restrict format, ...)
 {
 	void	**ash_tab;
+	char	key[1];
 	va_list argl;
 	int		i;
 
@@ -27,15 +31,17 @@ int	ft_printf(const char *restrict format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-		//	ash_tab[hash(format[i + 1])](va_arg(argl, int));
-			integer(va_arg(argl, int));
+			key[0] = format[i];
+			//*ash_tab(va_arg(argl, int));
+			//ash_tab[8](va_arg(argl, int));
+			//integer(va_arg(argl, int));
 			//while (ft_isspace(format[i]))
 		}
 		else
 			ft_putchar(format[i]);
 		i++;
 	}
-	ft_memdel(ash_tab);
+	ft_memdel((void **)ash_tab);
 	va_end(argl);
 	return (1);
 }
