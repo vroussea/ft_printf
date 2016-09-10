@@ -6,31 +6,25 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 17:09:04 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/09 13:36:22 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/10 17:48:54 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	main(int ac, char **av)
+int	main()
 {
-	if (ac == 2)
-	{
-		hash(*av[1]);
-		hash('d');
-		hash('i');
-		hash('o');
-		hash('u');
-		hash('x');
-		hash('X');
-		hash('n');
-		hash('s');
-		hash('c');
-		hash('%');
-//		ft_putstr("ft_printf : ");
-//		ft_printf("%d\n", 4.5);
-//		printf("printf : %f and %d\n", 97.5, 4);
-	}
+	int		*ptr;
+
+	ptr = (int *)ft_memalloc(sizeof(int) * 5);
+	ft_printf("ptr : %p\n", ptr);
+	printf("ptr : %p\n", ptr);
+	ft_printf("plein de int : %d %d %d %d\n", 5, 6, 7, 8);
+	printf("plein de int : %d %d %d %d\n", 5, 6, 7, 8);
+	ft_printf("string : %s\n", "mdr ça marche");
+	printf("string : %s\n", "mdr ça marche");
+	ft_printf("chars : %c%c%c%c%c%c\n", 'c', 'o', 'u', 'c', 'o', 'u');
+	printf("chars : %c%c%c%c%c%c\n", 'c', 'o', 'u', 'c', 'o', 'u');
 	return (0);
 }
