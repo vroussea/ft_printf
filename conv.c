@@ -6,48 +6,67 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 15:56:48 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/10 21:42:58 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/11 18:35:32 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-void	integer(va_list argl, char key)
+char	*integer(va_list argl, char key)
 {
+	char	*new;
+
 	key = (char)key;
-	ft_putnbr(va_arg(argl, int));
+	new = ft_itoa(va_arg(argl, int));
+	return (new);
 }
 
-void	character(va_list argl, char key)
+char	*character(va_list argl, char key)
 {
+	char	*new;
+	char	c;
+
+	new = ft_strnew(1);
 	key = (char)key;
-	ft_putchar(va_arg(argl, int));
+	c = (va_arg(argl, int));
+	new[0] = c;
+	return (new);
 }
 
-void	string(va_list argl, char key)
+char	*string(va_list argl, char key)
 {
+	char	*new;
+
 	key = (char)key;
-	ft_putstr(va_arg(argl, char *));
+	new = ft_strdup(va_arg(argl, char *));
+	return (new);
 }
 
-void	hexa(va_list argl, char key)
+char	*hexa(va_list argl, char key)
 {
-	char	*str;
+	char	*new;
 	char	*tmp;
 
 	if (key == 'p')
-		ft_putstr("0x");
-	if (key == 'X')
 	{
-		str = ft_ltoa_base(va_arg(argl, long), 16);
-		tmp = str;
-		while (*tmp != '\0')
-		{
-			*tmp = ft_toupper(*tmp);
-			tmp++;
-		}
-		ft_putstr(str);
+		new = ft_strdup("0x");
+		tmp = ft_ltoa_base(va_arg(argl, long), 16);
+		ft_strrealloc(new, ft_strlen(tmp));
+		ft_strncat(new, tmp, ft_strlen(tmp));
 	}
 	else
-		ft_putnbr_base(va_arg(argl, long), 16);
+	{
+		new = ft_ltoa_base(va_arg(argl, long), 16);
+		if (key == 'X')
+		{
+			tmp = new;
+			while (*tmp != '\0')
+			{
+				*tmp = ft_toupper(*tmp);
+				tmp++;
+			}
+		}
+	}
+	return (new);
 }

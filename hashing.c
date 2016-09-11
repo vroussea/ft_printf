@@ -6,19 +6,21 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 17:08:25 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/10 21:47:09 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/11 17:30:18 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		hash(const char key)
+int	hash(const char key)
 {
 	return((key % 45) / 1.2);
 }
 
-void	init_hash(t_hash **tab)
+int	init_hash(t_hash **tab)
 {
+	/*if (!(*tab = (t_hash *)ft_memalloc(sizeof(t_hash) * 36)))
+		return (-1)*/
 	*tab = (t_hash *)ft_memalloc(sizeof(t_hash) * 36);
 	(*tab)[hash('d')] = &integer;
 	(*tab)[hash('i')] = &integer;
@@ -33,4 +35,5 @@ void	init_hash(t_hash **tab)
 	(*tab)[hash('d')] = &integer;
 	(*tab)[hash('d')] = &integer;
 	(*tab)[hash('d')] = &integer;*/
+	return (0);
 }
