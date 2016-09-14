@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 17:09:04 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/11 20:09:01 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/14 18:53:18 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 int	main()
 {
 	int		*ptr;
+	char	*str;
 
 	ptr = (int *)ft_memalloc(sizeof(int) * 5);
-	printf("s %d\nS %d\np %d\nd %d\nD %d\ni %d\no %d\nO %d\nu %d\nU %d\nx %d\nX %d\nc %d\nC %d\n%d%d%d%d\n", hash('s'), hash('S'), hash('p'), hash('d'), hash('D'), hash('i'), hash('o'), hash('O'), hash('u'), hash('U'), hash('x'), hash('X'), hash('c'), hash('C'), 1, 1, 1, 1);
-	ft_printf("nb char : %d\n", ft_printf("random string : qwertyuiop%cb%sc%pd%Xe%dfdsfsd\n", 'a', "mdr", ptr, 123456, 1));
-	ft_putendl("");
-	printf("nb char : %d\n", printf("random string : qwertyuiop%cb%sc%pd%Xe%dfdsfsd\n", 'a', "mdr", ptr, 123456, 1));
-/*	ft_printf("ptr : %p\n", ptr);
+	printf("s %d\nS %d\np %d\nd %d\nD %d\ni %d\no %d\nO %d\nu %d\nU %d\nx %d\nX %d\nc %d\nC %d\n", hash('s'), hash('S'), hash('p'), hash('d'), hash('D'), hash('i'), hash('o'), hash('O'), hash('u'), hash('U'), hash('x'), hash('X'), hash('c'), hash('C'));
+	ft_printf("nb char : %d\n", ft_printf("random string : %c %s %p %x %X %d\n", 'a', "mdr", ptr, (unsigned int)ptr, (unsigned int)ptr, 1));
+	printf("nb char : %d\n", printf("random string : %c %s %p %x %X %d\n", 'a', "mdr", ptr, (unsigned int)ptr, (unsigned int)ptr, 1));
+	ft_putstr("type string : ");
+	get_next_line(0, &str);
+	ft_printf("you typed : %s\n", str);
+	/*ft_printf("ptr : %p\n", ptr);
 	printf("ptr : %p\n", ptr);
 	ft_printf("ptr : %p\n", (void *)0);
 	printf("ptr : %p\n", (void *)0);

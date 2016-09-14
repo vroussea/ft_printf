@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 15:56:48 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/11 18:35:32 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/14 18:17:05 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ char	*hexa(va_list argl, char key)
 	{
 		new = ft_strdup("0x");
 		tmp = ft_ltoa_base(va_arg(argl, long), 16);
-		ft_strrealloc(new, ft_strlen(tmp));
+		new = ft_strrealloc(new, ft_strlen(tmp));
 		ft_strncat(new, tmp, ft_strlen(tmp));
 	}
 	else
 	{
-		new = ft_ltoa_base(va_arg(argl, long), 16);
+		new = ft_ltoa_base(va_arg(argl, unsigned int), 16);
 		if (key == 'X')
 		{
 			tmp = new;

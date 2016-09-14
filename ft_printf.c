@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 16:42:55 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/11 20:09:57 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/14 17:10:51 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ static int	ft_read(va_list argl, t_hash *tab, const char *restrict format)
 		}*/
 		if (format[i] == '%')
 		{
-			ft_strrealloc(str, i);
+			str = ft_strrealloc(str, i);
 			ft_strncat(str, format, i);
 			format += i + 1;
 			new = tab[hash(*format)](argl, *format);
 			size = ft_strlen(new);
-			ft_strrealloc(str, size);
+			str = ft_strrealloc(str, size);
 			ft_strncat(str, new, size);
 			ft_strdel(&new);
-			//format++;
+			format++;
 			i = 0;
 		}
 		else
 			i++;
 	}
-	ft_strrealloc(str, i);	
+	str = ft_strrealloc(str, i);	
 	ft_strncat(str, format, i);
 	size = ft_strlen(str);
 	ft_putstr(str);
