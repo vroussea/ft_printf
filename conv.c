@@ -6,12 +6,12 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 15:56:48 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/15 18:08:46 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/15 19:06:30 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 char	*integer(va_list argl, char key)
 {
@@ -27,7 +27,8 @@ char	*character(va_list argl, char key)
 	char	*new;
 	char	c;
 
-	new = ft_strnew(1);
+	if (!(new = ft_strnew(1)))
+		return (NULL);
 	key = (char)key;
 	c = (va_arg(argl, int));
 	new[0] = c;
@@ -40,7 +41,6 @@ char	*string(va_list argl, char key)
 
 	key = (char)key;
 	new = ft_strdup(va_arg(argl, char *));
-	//ft_putendl(new);
 	return (new);
 }
 
