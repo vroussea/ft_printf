@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/09/08 17:11:23 by vroussea         ###   ########.fr        #
+#    Updated: 2016/09/15 18:51:52 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MAKELIB =	make -C libft/
 INCLUDESDIR =.
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
-SOURCES =	ft_printf.c main.c hashing.c conv.c
+SOURCES =	ft_printf.c main.c hashing.c conv.c# analyse.c
 OBJS =		$(SOURCES:.c=.o)
 
 all :		$(NAME)

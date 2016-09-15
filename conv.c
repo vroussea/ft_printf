@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 15:56:48 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/14 18:17:05 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/15 18:08:46 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*string(va_list argl, char key)
 
 	key = (char)key;
 	new = ft_strdup(va_arg(argl, char *));
+	//ft_putendl(new);
 	return (new);
 }
 

@@ -6,11 +6,20 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 16:42:55 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/14 17:10:51 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/15 18:29:59 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char		*void_funct(va_list argl, char key)
+{
+	char	tmpc;
+
+	if (argl)
+		tmpc = key;
+	return (NULL);
+}
 
 static int	ft_read(va_list argl, t_hash *tab, const char *restrict format)
 {
@@ -23,30 +32,26 @@ static int	ft_read(va_list argl, t_hash *tab, const char *restrict format)
 	str = ft_strnew(0);
 	while (format[i] != '\0')
 	{
-	/*	if (i == 0)
-		{
-			ft_putchar(format[i]);
-			ft_putchar(' ');
-			ft_putendl(str);
-			ft_putnbr(i);
-		}*/
 		if (format[i] == '%')
 		{
-			str = ft_strrealloc(str, i);
+			if (!(str = ft_strrealloc(str, i)))
+				return (-1);
 			ft_strncat(str, format, i);
 			format += i + 1;
-			new = tab[hash(*format)](argl, *format);
-			size = ft_strlen(new);
-			str = ft_strrealloc(str, size);
-			ft_strncat(str, new, size);
+			i = 0;
+			if (!(new = tab[(unsigned char)*format](argl, *format)))
+				return (-1);
+			if (!(str = ft_strrealloc(str, ft_strlen(new))))
+				return (-1);
+			ft_strncat(str, new, ft_strlen(new));
 			ft_strdel(&new);
 			format++;
-			i = 0;
 		}
 		else
 			i++;
 	}
-	str = ft_strrealloc(str, i);	
+	if (!(str = ft_strrealloc(str, i)))
+		return (-1);
 	ft_strncat(str, format, i);
 	size = ft_strlen(str);
 	ft_putstr(str);
@@ -57,14 +62,14 @@ static int	ft_read(va_list argl, t_hash *tab, const char *restrict format)
 int			ft_printf(const char *restrict format, ...)
 {
 	t_hash	*tab;
-	va_list argl;
 	int		ret;
+	va_list	argl;
 
+	va_start(argl, format);
 	if((init_hash(&tab)) == -1)
 		return (-1);
-	va_start(argl, format);
 	ret = ft_read(argl, tab, format);
-	ft_memdel((void **)tab);
+	ft_memdel((void **)&tab);
 	va_end(argl);
 	return (ret);
 }
