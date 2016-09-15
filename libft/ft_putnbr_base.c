@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 21:43:16 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/11 17:28:02 by vroussea         ###   ########.fr       */
+/*   Created: 2016/09/10 13:49:35 by vroussea          #+#    #+#             */
+/*   Updated: 2016/09/14 18:06:36 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "unistd.h"
 
-void	ft_putstr_fd(const char *s, int fd)
+void	ft_putnbr_base(long n, int base)
 {
-	write(fd, s, ft_strlen(s));
+	ft_putnbr_base_fd(n, base, 1);
 }

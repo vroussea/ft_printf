@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_base_fd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 21:43:16 by vroussea          #+#    #+#             */
-/*   Updated: 2016/09/11 17:28:02 by vroussea         ###   ########.fr       */
+/*   Created: 2016/09/10 13:50:46 by vroussea          #+#    #+#             */
+/*   Updated: 2016/09/14 18:06:22 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "unistd.h"
 
-void	ft_putstr_fd(const char *s, int fd)
+void	ft_putnbr_base_fd(long n, int base, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	unsigned long	value;
+
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		value = n * -1;
+	}
+	else
+		value = n;
+	if (value >= (unsigned long)base)
+	{
+		ft_putnbr_base_fd(value / base, base, fd);
+		ft_putnbr_base_fd(value % base, base, fd);
+	}
+	else
+	{
+		if (value <= 9)
+			ft_putchar_fd('0' + value, fd);
+		else
+			ft_putchar_fd('a' + value - 10, fd);
+	}
 }

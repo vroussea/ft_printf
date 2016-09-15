@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:50:51 by vroussea          #+#    #+#             */
-/*   Updated: 2016/04/26 20:18:16 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/09/14 17:04:34 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+/*
+** realloc a string with n new bytes
+*/
+char				*ft_strrealloc(char *str, size_t n);
 /*
 ** free a void** var
 */
@@ -140,6 +144,14 @@ void				ft_putnbr_fd(int n, int fd);
 ** call ft_putnbr_fd on fd:1 (file descriptor)
 */
 void				ft_putnbr(int n);
+/*
+** write a long in different base
+*/
+void				ft_putnbr_base_fd(long n, int base, int fd);
+/*
+** call ft_putnbr_fd on fd:1 (file descriptor)
+*/
+void				ft_putnbr_base(long n, int base);
 /*
 ** write a char
 */
@@ -258,9 +270,17 @@ char				*ft_strdup(const char *s1);
 */
 int					ft_atoi(const char *str);
 /*
+** convert an int in different bases to an alpha num string
+*/
+char				*ft_itoa_base(int n, int base);
+/*
 ** convert an int to an alpha num string
 */
 char				*ft_itoa(int n);
+/*
+** convert a long in different bases to an alpha num string
+*/
+char				*ft_ltoa_base(long value, int base);
 /*
 ** return 1 if c is \t, \n, \r, \v, ' ', 0 else
 */

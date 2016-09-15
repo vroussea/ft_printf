@@ -6,12 +6,12 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/04/26 20:17:07 by vroussea         ###   ########.fr        #
+#    Updated: 2016/09/11 16:19:13 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		libft.a
-INCLUDESDIR =.
+HEADER =	libft.h
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 SOURCES =	ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr.c\
@@ -27,11 +27,13 @@ SOURCES =	ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr.c\
 			ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c    \
 			ft_strsub.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c     \
 			ft_lstiter.c ft_lstmap.c ft_sqrt.c ft_lstadd_end.c ft_abs.c        \
-			get_next_line.c ft_intswap.c ft_tabdel.c ft_matrixid.c
+			get_next_line.c ft_intswap.c ft_tabdel.c ft_matrixid.c             \
+			ft_itoa_base.c ft_ltoa_base.c ft_putnbr_base.c ft_putnbr_base_fd.c \
+			ft_strrealloc.c
 OBJS =		$(SOURCES:.c=.o)
 
 all :		$(NAME)
-$(NAME) :	$(OBJS)
+$(NAME) :	$(OBJS) $(HEADER) Makefile
 			ar rc $(NAME) $(OBJS)
 			ranlib $(NAME)
 norm :
